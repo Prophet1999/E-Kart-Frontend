@@ -1,0 +1,49 @@
+<br>
+<h3 *ngIf="successMessage!=null && successMessage!=''" class="success-message">
+  {{successMessage}}
+</h3>
+<h3 *ngIf="errorMessage!=null && errorMessage!=''" class="error-message">
+  {{errorMessage}}
+</h3>
+
+<div class="container-fluid d-flex flex-column justify-content-center align-items-center rounded-3" style="background-color: rgb(245, 245, 245, 0.7);" >
+  <h1 class="mt-5" style="font-weight: bold;">ITEMS IN CART</h1> <hr>
+  <div *ngIf="!cartList?.length;else showCart">
+    <h1 class="text-primary">No Items Added In Cart!</h1>
+    <button class="btn btn-primary btn-lg w-100 mb-5"  (click)="continueShopping()">Continue Shopping</button>  
+  </div>
+  <ng-template #showCart> 
+    <div  *ngFor="let cart of cartList" class="w-75">
+      <div class="card mb-3 m-auto bg-dark text-bg-dark" >
+        <div class="row no-gutters">
+          <div class="col-md-3">
+            <img src="assets/resources/{{cart.product.productId}}.jpg" style="width:200px;"class="card-img" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h1 class="card-title mt-2">{{cart.product.name}}</h1>
+              <p class="card-text">
+                {{cart.product.brand}}
+                {{cart.product.category}}
+                {{cart.product.description}}
+              
+              <h2 class="card-text font-monospace">Rs. {{cart.product.price}}</h2>
+              <button class="btn btn-danger btn-lg w-25" (click)="deleteProductFromCart(cart)" >Remove Product</button>  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>
+<!-- write a code to display the cart product details which includes image, name, brand and price
+also add a Remove button to delete the product
+if cart is empty then display appropriate message and provide a button which will call continueShopping()-->
+
+
+
+<div class="d-flex justify-content-center align-items-center mt-3" *ngIf="cartList && cartList.length > 0 ">
+  <button class="btn btn-lg btn-success w-25 mb-4" (click)="placeOrder(cartList)" style="font-size : 1.2rem">
+    Place Order
+  </button>
+</div>

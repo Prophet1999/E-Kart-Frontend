@@ -1,0 +1,75 @@
+<div class="d-flex justify-content-center align-items center w-100" style="background: rgb(85,51,0);
+background: linear-gradient(90deg, rgba(85,51,0,1) 0%, rgba(187,109,1,1) 100%); height:10vh;">
+ 
+  <div class="font-weight-bold mt-4" style="font-size:25px; font-weight: bold; color:white;">Amount to be paid : Rs.{{grandTotal}}</div>
+  <br />
+  <h3 class="success-message text-center">{{successMessage}}</h3>
+  <h3 class="error-message text-center">{{errorMessage}}</h3>
+  <br />
+  
+</div>
+
+<br>
+<h1 class="title text-light"><b>Your saved Debit Cards</b></h1>
+<div *ngIf="!viewCardDetails">
+  <div *ngFor="let card1 of cardList1; let i1=index" class=" d-flex justify-content-center align-items-center" style="padding: 1%;">
+    <div class="d-flex justify-content-left align-items-center rounded-3 w-75" style=" padding:15px; background: rgb(0,46,62);
+    background: linear-gradient(90deg, rgba(0,46,62,1) 0%, rgba(0,160,255,1) 100%); max-width:40rem;">
+      <div class="row">
+        <div class="col card-block offset-1" style="padding: 2%; ">
+          <input type="radio" name="pay" (click)="selectExistingCards1(i1)" />
+          <br />
+          <p style="font-size: 19px; font-weight: bold; color: white; padding:1%;">CARD TYPE: {{card1.cardType}} </p>
+          <br />
+          <p style="font-size: 19px; font-weight: bold; color: white;">CARD NUMBER: {{card1.cardNumber}} </p>
+          <br />
+          <p style="font-size: 19px; font-weight: bold; color: white;">NAME ON CARD: {{card1.nameOnCard}} </p>
+          <br />
+          <p style="font-size: 19px; font-weight: bold; color: white;">EXPIRY DATE: {{card1.expiryDate}} </p>
+          <br />
+          <div *ngIf="i1==selectedI1">
+            <div class="col card-block">
+              <br />
+              <button class="btn btn-primary" [disabled]="selectedI1 != i1" (click)="placeOrder(card1); confirmOrder1=true">Confirm Order</button>
+              <br />
+            </div>            
+            
+            <div *ngIf="confirmOrder1">
+            <div class="col card-block">
+              <br />
+              <strong style="color: white;">Enter Order ID:</strong>
+              <div class="input-group">
+                <input type="text" placeholder="Enter the OrderID generated above" class="form-control ml-5 mr-4"
+                  [(ngModel)]="orderId" />
+              </div>
+              <br />
+              <strong style="color: white;">Enter CVV:</strong>
+              <div class="input-group">
+                <input type="password" placeholder="Enter your Debit Card CVV" class="form-control ml-5 mr-4"
+                  [(ngModel)]="cvvg" (ngModelChange)="validation()" />
+                <button class="btn btn-success" (click)="makePayment(card1)"
+                  [disabled]="showError || selectedI1 != i1">Pay</button>
+              </div>
+              <br />
+              <div *ngIf="showError" class="text-danger">{{showError}}</div>
+              <br />
+            </div>
+          </div>
+
+          </div>
+        </div>
+      </div>
+      <div *ngIf="!cardList1 || cardList1.length==0" class="error-message">
+        No debit cards are added
+      </div>
+    </div>
+
+   
+  </div>
+
+  <br><br><br>
+
+  
+  <!-- Write a code to display the credit card details like card type, number, name and expiry date.
+  On selecting the particular order, Confirm Order should be displayed.
+  After confirming the order, Payment should be done by providing OrderID and CVV. -->

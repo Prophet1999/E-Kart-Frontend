@@ -1,0 +1,21 @@
+<div class="container">
+    <ul class="nav nav-tabs nav-justified">
+      <li class="nav-item">
+        <br/>
+        <h3 class="title text-info"><b>Profile</b></h3>
+      </li>
+    </ul>
+    <br>
+    <br>
+    <div class="tab-content">
+  
+      <div id="profile" class="tab-pane fade show active">
+        <app-customer-profile-details *ngIf=" view =='profile'"></app-customer-profile-details>
+      </div>
+      <div id="password" class="tab-pane fade">
+        <customer-change-password *ngIf="view=='password'"></customer-change-password>
+      </div>
+
+    </div>
+  
+  </div>

@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-md bg-dark navbar-dark" style="margin-left: -15px;margin-right: -15px;">
+    <a class="navbar " style="margin:0vh 3vw;" routerLink="products"><img src="assets/images/logo.png"
+        height="60"
+        alt="Ekart Logo"
+        loading="lazy"
+        class="rounded "></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="collapsibleNavbar" >
+        <ul class="nav navbar-nav ml-auto mx-3">
+            <li class="nav-item">
+                <a routerLink="products" routerLinkActive="active" style="font-size:25px;" class="nav-link" >Products</a>
+            </li>
+        </ul>
+
+        <ul class="nav navbar-nav ml-auto mx-3">
+
+
+            <li class="nav-item">
+                <a routerLink="cart" routerLinkActive="active" style="font-size:25px;" class="nav-link">
+                    <span id="boot-icon" class="">Cart</span>
+                    <span class="cart badge badge-pill bg-warning " style="padding:5px;margin: 5px;">{{cart.length}}</span>
+                </a>
+            </li>
+        </ul>
+
+        <ul  class="nav navbar-nav ml-auto mx-3" style="padding-left: 70%;">
+           <li class="nav-item dropdown" routerLinkActive="active">
+            <button class="bg-dark nav-link dropdown-toggle" mat-button [matMenuTriggerFor]="menu">{{loggedInCustomer.name}}</button>
+                <mat-menu #menu="matMenu">
+                <button mat-menu-item>
+                    <a routerLink="details" routerLinkActive="active" class="nav-link">My Details</a>
+                </button>
+                <button mat-menu-item>
+                    <a routerLink="viewOrder" routerLinkActive="active" class="nav-link">My Orders</a>
+                </button>
+                <button mat-menu-item>
+                    <a class="nav-link" routerLinkActive="active" (click)="logout()">Logout</a>
+                </button>
+            </mat-menu>
+           </li>
+        </ul>
+    </div>
+</nav>
+
+    <div class="row bg">
+        <div class="container-fluid">
+            <router-outlet></router-outlet>
+        </div>
+    </div>

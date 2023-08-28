@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="card mb-3 m-auto bg-dark text-bg-dark" style="max-width: 540px;">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img src="assets/resources/{{selectedProduct.productId}}.jpg" style="width:150px;"class="card-img" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h1 class="card-title mt-2">{{selectedProduct.name}}</h1>
+          <p class="card-text">
+            {{selectedProduct.brand}}
+            {{selectedProduct.category}}
+            {{selectedProduct.description}}
+          
+          <h2 class="card-text font-monospace">Rs. {{selectedProduct.price}}</h2>
+          <button class="btn btn-primary btn-lg w-100" (click)="addToCart()">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=" d-flex align-items-center justify-content-center ">
+    <div *ngIf="successMessage">
+      <h2 class="text-success">{{successMessage}}</h2>
+    </div>
+    <div *ngIf="errorMessage">
+      <h2 class="text-success">{{errorMessage}}</h2>
+    </div>
+  </div>
+    <!-- Write the code to display the success and error message after adding product to the cart -->
+
+
+    <!-- <div class="card-deck" style="width: 275px; position: relative;">
+        <img src="assets/resources/{{selectedProduct.productId}}.jpg" alt="">
+        <!-- Write the code to display the selected product image and Add to Cart button 
+        <button class="btn btn-primary btn-lg mt-5 w-75" (click)="addToCart()">Add to Cart</button>
+    </div>
+
+
+    <div class="card bg-dark mb-auto" style="width: 80%;">
+
+       
+            <h2 class="text-warning">Name : </h2><h2 class="text-primary">{{selectedProduct.name}}</h2>
+            <h2 class="text-warning">Brand : </h2><h2 class="text-primary">{{selectedProduct.brand}}</h2>
+            <h2 class="text-warning">Category : </h2><h2 class="text-primary">{{selectedProduct.category}}</h2>
+            <h2 class="text-warning">Description : </h2><h2 class="text-primary">{{selectedProduct.description}}</h2>
+            <h2 class="text-warning">Price : </h2><h2 class="text-primary">{{selectedProduct.price}}</h2>
+        
+    </div> -->
+
+    <!-- <div class="card m-auto" style="width: 20rem;">
+      
+        <div class="card-body">
+            
+            
+         
+        </div>
+      </div> -->
+
+</div>
